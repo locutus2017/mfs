@@ -1,1 +1,1 @@
-# mfs
+MATE from Scratch/MATE for Slackware
