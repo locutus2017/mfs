@@ -38,7 +38,16 @@ mate-screensaver
 engrampa
 mate-media
 mate-power-manager
-mate-system-monitor 
+mate-system-monitor
+mate-calc
+atril
+caja-extensions
+caja-dropbox
+mate-applets
+mate-sensors-applet
+mate-utils
+mozo
+pluma 
 libwpe
 wpebackend-fdo
 bubblewrap
