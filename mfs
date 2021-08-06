@@ -47,8 +47,15 @@ mate-applets
 mate-sensors-applet
 mate-utils
 mozo
-pluma 
+pluma
 libwpe
 wpebackend-fdo
 bubblewrap
 geoclue2
+yelp
+mate-user-guide
+mate-tweak
+mate-user-share
+ido
+libindicator
+mate-indicator-applet
