@@ -221,6 +221,7 @@ gksu
 gssdp
 gupnp
 libgxps
+gtksourceview4
 mate-common
 mate-desktop
 libmatekbd
@@ -250,6 +251,7 @@ mate-calc
 atril
 caja-extensions
 caja-dropbox
+caja-actions
 mate-applets
 mate-sensors-applet
 mate-utils
@@ -266,6 +268,13 @@ mate-user-share
 ido
 libindicator
 mate-indicator-applet
+setproctitle
+setuptools-scm
+Unidecode
+python-xlib
+python-distutils-extra
+configobj
+mate-menu
 )
 
 message() {
