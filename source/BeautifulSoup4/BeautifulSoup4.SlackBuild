@@ -30,7 +30,7 @@ PRGNAM=BeautifulSoup4
 SRCNAM=beautifulsoup4
 VERSION=${VERSION:-$(echo $SRCNAM-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_gfs}
+TAG=${TAG:-_mfs}
 
 
 if [ -z "$ARCH" ]; then
@@ -42,7 +42,7 @@ if [ -z "$ARCH" ]; then
 fi
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/gfs}
+TMP=${TMP:-/tmp/mfs}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
