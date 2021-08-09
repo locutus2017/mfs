@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# mfs (gnome from scratch) system build
+# mfs (mate from scratch) system build
 #
 # Copyright 2016-2021 Rafael Tavares <mdrafaeltavares@gmail.com>
 # All rights reserved
@@ -141,9 +141,9 @@ mkdir -p install
 #            |-----handy-ruler------------------------------------------------------|
 cat <<EOT >install/slack-desc
 slackport-mfs:
-slackport-mfs: GNOME From Scratch (mfs) System Builder
+slackport-mfs: MATE From Scratch (mfs) System Builder
 slackport-mfs:
-slackport-mfs: This package contains SlackBuild scripts needed to build the GNOME
+slackport-mfs: This package contains SlackBuild scripts needed to build the MATE
 slackport-mfs: for Slackware. The mfs is an executable script responsible for build
 slackport-mfs: and install the packages in pre-set order. In addition, mfs works as
 slackport-mfs: a tool for editing, building and install pacakges in a more practical
@@ -275,6 +275,10 @@ python-xlib
 python-distutils-extra
 configobj
 mate-menu
+numix-icon-theme
+numix-icon-theme-circle
+python3-soupsieve
+BeautifulSoup4
 )
 
 message() {
