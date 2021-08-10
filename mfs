@@ -263,8 +263,13 @@ mozo
 pluma
 libwpe
 wpebackend-fdo
-bubblewrap
+libdaemon
+python3-dbusmock
+avahi
 geoclue2
+libseccomp
+xdg-dbus-proxy
+bubblewrap
 webkit2gtk
 yelp
 mate-user-guide
@@ -289,7 +294,6 @@ BeautifulSoup4
 p7zip
 seahorse
 wpebackend-fdo
-xdg-dbus-proxy
 )
 
 message() {
