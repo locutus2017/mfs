@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Slackware build script for numix-icon-theme-circle
+# Slackware build script for numix-icon-theme
 
 # Copyright 2014 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
@@ -22,7 +22,7 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=numix-icon-theme-circle
+PRGNAM=numix-icon-theme
 BUILD=${BUILD:-1}
 TAG=${TAG:-_mfs}
 
@@ -65,7 +65,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 if [ ! -d $PRGNAM ]; then
-  git clone https://github.com/numixproject/numix-icon-theme-circle.git
+  git clone https://github.com/numixproject/numix-icon-theme.git
 fi
 cd $PRGNAM
 git pull
@@ -73,10 +73,10 @@ git pull
 VERSION=`git log | head -1 | cut -d " " -f 2 | cut -c 1-10`
 
 mkdir -p $PKG/usr/share/icons
-cp -rf Numix-Circle $PKG/usr/share/icons
+cp -rf Numix $PKG/usr/share/icons
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a license readme.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
