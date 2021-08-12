@@ -263,8 +263,13 @@ mozo
 pluma
 libwpe
 wpebackend-fdo
-bubblewrap
+libdaemon
+python3-dbusmock
+avahi
 geoclue2
+libseccomp
+xdg-dbus-proxy
+bubblewrap
 webkit2gtk
 yelp
 mate-user-guide
@@ -286,10 +291,14 @@ numix-icon-theme
 numix-icon-theme-circle
 python3-soupsieve
 BeautifulSoup4
-p7zip
-seahorse
+gst-plugins-bad
+python2-scandir
+pathlib2
+wxPython4
 wpebackend-fdo
-xdg-dbus-proxy
+p7zip
+libhandy
+seahorse
 )
 
 message() {

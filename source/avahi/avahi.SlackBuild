@@ -110,6 +110,7 @@ chmod 0755 service-type-database/build-db
 cat $CWD/bssh.1 > man/bssh.1
 cat $CWD/avahi-discover.1 > man/avahi-discover.1
 
+export PYTHON=python3
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
