@@ -24,12 +24,13 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-wget -c --no-check-certificate https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz
+cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=avahi
-VERSION=${VERSION:-$(echo $PRGNAM-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
+VERSION=${VERSION:-0.8}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_mfs}
+PKGTYPE=${PKGTYPE:-txz}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -39,7 +40,13 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-CWD=$(pwd)
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+wget -c --no-check-certificate https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz
+
 TMP=${TMP:-/tmp/mfs}
 PKG=$TMP/pkg-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
@@ -110,41 +117,45 @@ chmod 0755 service-type-database/build-db
 cat $CWD/bssh.1 > man/bssh.1
 cat $CWD/avahi-discover.1 > man/avahi-discover.1
 
-export PYTHON=python3
+export PYTHON="/usr/bin/python3"
+
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
   --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --libexecdir=/usr/libexec \
   --sysconfdir=/etc \
   --localstatedir=/var \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --infodir=/usr/info \
   --mandir=/usr/man \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --with-systemdsystemunitdir=no \
-  --enable-tests \
-  --disable-static \
-  --disable-monodoc \
-  --disable-autoipd \
-  --enable-compat-libdns_sd \
-  --enable-python-dbus \
+  --program-prefix= \
+  --program-suffix= \
+  --enable-static=no \
   --enable-glib \
+  --enable-introspection=auto \
+  --disable-qt3 \
+  --disable-qt4 \
+  --disable-qt5 \
+  --disable-gtk \
+  --enable-gtk3 \
   --enable-dbus \
   --enable-python \
-  --enable-gtk \
-  --enable-gtk3 \
-  --enable-qt5 \
-  --disable-qt4 \
-  --disable-qt3 \
+  --enable-python-dbus \
+  $MONO \
+  --disable-monodoc \
+  --disable-autoipd \
   --enable-core-docs \
+  --enable-tests \
+  --enable-compat-libdns_sd \
+  --with-distro=slackware \
   --with-dbus-sys=/usr/share/dbus-1/system.d \
   --with-avahi-user=avahi \
   --with-avahi-group=avahi \
   --with-avahi-priv-access-group=netdev \
-  --with-distro=slackware \
-  --program-prefix= \
-  --program-suffix= \
-  --build=$ARCH-slackware-linux \
-  $MONO
+  --with-systemdsystemunitdir=no \
+  --build=$ARCH-slackware-linux
 
 make $JOBS || make
 make install DESTDIR=$PKG
@@ -157,9 +168,9 @@ find $PKG -name '*.la' -delete
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $(find $PKG/usr/man -type l); do ln -s $(readlink $i).gz $i.gz; rm $i; done
 
-mv $PKG/etc/rc.d/rc.avahidaemon $PKG/etc/rc.d/rc.avahidaemon.new
-mv $PKG/etc/rc.d/rc.avahidnsconfd $PKG/etc/rc.d/rc.avahidnsconfd.new
-mv $PKG/etc/avahi/avahi-daemon.conf $PKG/etc/avahi/avahi-daemon.conf.new
+mv $PKG/etc/rc.d/rc.avahidaemon{,.new}
+mv $PKG/etc/rc.d/rc.avahidnsconfd{,.new}
+mv $PKG/etc/avahi/avahi-daemon.conf{,.new}
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a LICENSE docs/* $PKG/usr/doc/$PRGNAM-$VERSION
