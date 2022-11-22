@@ -12,7 +12,7 @@ MFSVERSION=0.2.9
 MFSSOURCEDIR=./source
 MFSCWD=$(pwd)
 OUTPUT=/tmp
-MFSEDITOR=nano
+MFSEDITOR=gvim
 
 set -e
 
